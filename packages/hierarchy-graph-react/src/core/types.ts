@@ -12,6 +12,8 @@ export type SimpleTreeOptions = {
   levelGap: number;
   siblingGap: number;
   parentAlignment?: 'center' | 'first-child';
+  direction?: Direction;
+  isHorizontal?: boolean;
 };
 
 export type FlatNode<T = unknown> = {
@@ -30,8 +32,8 @@ export type GraphEdge<E = unknown> = {
 
 export type LayoutNode<T = unknown> = {
   id: string;
-  x: number;
-  y: number;
+  x: number; // center
+  y: number; // center
   width?: number;
   height?: number;
   data: T;
