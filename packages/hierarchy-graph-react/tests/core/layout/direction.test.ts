@@ -1,43 +1,96 @@
 import { describe, expect, it } from 'vitest';
-import type { LayoutNode } from '../../../src/core/types';
-import { applyDirection } from '../../../src/core/layout/direction';
+import type { GraphNode, LayoutNode } from '../../../src/core/types';
+import { computeSimpleTreeLayout } from '../../../src/core/layout/simpleTree';
 
-describe('applyDirection', () => {
-  const nodes: LayoutNode<{ label: string }>[] = [
-    { id: 'a', x: 10, y: 20, data: { label: 'a' }, depth: 0 },
-    { id: 'b', x: -5, y: 30, data: { label: 'b' }, depth: 1, parentId: 'a' },
+describe('simpleTree direction', () => {
+  const nodes: GraphNode<{ label: string }>[] = [
+    {
+      id: 'root',
+      data: { label: 'root' },
+      children: [{ id: 'child', data: { label: 'child' } }],
+    },
   ];
 
-  it('keeps coordinates for top-down', () => {
-    const result = applyDirection(nodes, 'top-down');
+  const options = {
+    nodeWidth: 100,
+    nodeHeight: 40,
+    levelGap: 30,
+    siblingGap: 20,
+  };
 
-    expect(result).toMatchObject(nodes);
+  const toMap = <T>(layout: LayoutNode<T>[]) => new Map(layout.map(node => [node.id, node]));
+  const verticalStep = options.nodeHeight + options.levelGap;
+  const horizontalStep = options.nodeWidth + options.levelGap;
+
+  it('lays out top-down positions along +y', () => {
+    const layout = computeSimpleTreeLayout(nodes, { ...options, direction: 'top-down' });
+    const map = toMap(layout);
+    const root = map.get('root');
+    const child = map.get('child');
+
+    expect(root).toBeDefined();
+    expect(child).toBeDefined();
+
+    if (!root || !child) {
+      throw new Error('Missing layout nodes.');
+    }
+
+    expect(root.y).toBe(0);
+    expect(child.y).toBe(verticalStep);
+    expect(root.x).toBe(child.x);
   });
 
-  it('inverts y for bottom-up', () => {
-    const result = applyDirection(nodes, 'bottom-up');
+  it('lays out bottom-up positions along -y', () => {
+    const layout = computeSimpleTreeLayout(nodes, { ...options, direction: 'bottom-up' });
+    const map = toMap(layout);
+    const root = map.get('root');
+    const child = map.get('child');
 
-    expect(result).toMatchObject([
-      { id: 'a', x: 10, y: -20, data: { label: 'a' }, depth: 0 },
-      { id: 'b', x: -5, y: -30, data: { label: 'b' }, depth: 1, parentId: 'a' },
-    ]);
+    expect(root).toBeDefined();
+    expect(child).toBeDefined();
+
+    if (!root || !child) {
+      throw new Error('Missing layout nodes.');
+    }
+
+    expect(root.y).toBe(0);
+    expect(child.y).toBe(-verticalStep);
+    expect(root.x).toBe(child.x);
   });
 
-  it('swaps x and y for left-right', () => {
-    const result = applyDirection(nodes, 'left-right');
+  it('lays out left-right positions along +x', () => {
+    const layout = computeSimpleTreeLayout(nodes, { ...options, direction: 'left-right' });
+    const map = toMap(layout);
+    const root = map.get('root');
+    const child = map.get('child');
 
-    expect(result).toMatchObject([
-      { id: 'a', x: 20, y: 10, data: { label: 'a' }, depth: 0 },
-      { id: 'b', x: 30, y: -5, data: { label: 'b' }, depth: 1, parentId: 'a' },
-    ]);
+    expect(root).toBeDefined();
+    expect(child).toBeDefined();
+
+    if (!root || !child) {
+      throw new Error('Missing layout nodes.');
+    }
+
+    expect(root.x).toBe(0);
+    expect(child.x).toBe(horizontalStep);
+    expect(root.y).toBe(child.y);
   });
 
-  it('swaps x and y and inverts x for right-left', () => {
-    const result = applyDirection(nodes, 'right-left');
+  it('lays out right-left positions along -x', () => {
+    const layout = computeSimpleTreeLayout(nodes, { ...options, direction: 'right-left' });
+    const map = toMap(layout);
+    const root = map.get('root');
+    const child = map.get('child');
 
-    expect(result).toMatchObject([
-      { id: 'a', x: -20, y: 10, data: { label: 'a' }, depth: 0 },
-      { id: 'b', x: -30, y: -5, data: { label: 'b' }, depth: 1, parentId: 'a' },
-    ]);
+    expect(root).toBeDefined();
+    expect(child).toBeDefined();
+
+    if (!root || !child) {
+      throw new Error('Missing layout nodes.');
+    }
+
+    expect(root.x).toBe(0);
+    expect(child.x).toBe(-horizontalStep);
+    expect(root.y).toBe(child.y);
   });
 });

@@ -1,8 +1,10 @@
+import BasicTree from './examples/BasicTree';
+
 export default function App() {
   return (
-    <div style={{ padding: 24, fontFamily: 'system-ui, sans-serif' }}>
-      <h1>Chess Tree Playground</h1>
-      <p>Start wiring examples in apps/playground/src/examples.</p>
+    <div style={{ padding: 24, fontFamily: 'system-ui, sans-serif', color: '#1c1c1c' }}>
+      <h1 style={{ marginBottom: 16 }}>Hierarchy Graph Playground</h1>
+      <BasicTree />
     </div>
   );
 }

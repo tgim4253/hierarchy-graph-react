@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "hierarchy-graph-react": ["../../packages/hierarchy-graph-react/src"],
+      "chess-tree-react": ["../../packages/chess-tree-react/src"]
+    }
+  }
+}
