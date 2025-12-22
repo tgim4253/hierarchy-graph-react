@@ -1,9 +1,24 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from 'react';
 
 export type GraphNode<T = unknown> = {
   id: string;
   data: T;
   children?: GraphNode<T>[];
+};
+
+export type SimpleTreeOptions = {
+  nodeWidth: number;
+  nodeHeight: number;
+  levelGap: number;
+  siblingGap: number;
+  parentAlignment?: 'center' | 'first-child';
+};
+
+export type FlatNode<T = unknown> = {
+  id: string;
+  data: T;
+  parentId?: string;
+  depth: number;
 };
 
 export type GraphEdge<E = unknown> = {
@@ -38,13 +53,12 @@ export type GraphProps<N = unknown, E = unknown> = {
   nodes: GraphNode<N>[];
   edges?: GraphEdge<E>[];
   onToggle?: (id: string) => void;
-  renderNode: (
-    node: LayoutNode<N>, 
-  ) => ReactNode;
+  renderNode: (node: LayoutNode<N>) => ReactNode;
   renderEdge?: (edge: LayoutEdge<E>) => ReactNode;
-  direction?: "top-down" | "bottom-up" | "left-right" | "right-left";
+  direction?: Direction;
   nodeSize?: { width: number; height: number };
   gap?: { level: number; sibling: number };
+  parentAlignment?: SimpleTreeOptions['parentAlignment'];
   camera?: {
     x: number;
     y: number;
@@ -54,3 +68,5 @@ export type GraphProps<N = unknown, E = unknown> = {
   className?: string;
   style?: CSSProperties;
 };
+
+export type Direction = 'top-down' | 'bottom-up' | 'left-right' | 'right-left';

@@ -6,11 +6,13 @@
     "dev": "pnpm --filter ./apps/playground dev",
     "preview": "pnpm --filter ./apps/playground preview",
     "build:playground": "pnpm --filter ./apps/playground build",
-    "build:packages": "pnpm -r --filter ./packages/** build",
+    "build:packages": "pnpm -r --filter \"./packages/**\" build",
     "build": "pnpm run build:packages && pnpm run build:playground",
-    "typecheck:packages": "pnpm -r --filter ./packages/** typecheck",
+    "typecheck:packages": "pnpm -r --filter \"./packages/**\" typecheck",
     "typecheck": "pnpm run typecheck:packages",
-    "clean": "pnpm -r --filter ./packages/** clean"
+    "test:packages": "pnpm -r --filter \"./packages/**\" test --if-present",
+    "test": "pnpm run test:packages",
+    "clean": "pnpm -r --filter \"./packages/**\" clean"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
