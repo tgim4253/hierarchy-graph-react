@@ -1,0 +1,56 @@
+import type { CSSProperties, ReactNode } from "react";
+
+export type GraphNode<T = unknown> = {
+  id: string;
+  data: T;
+  children?: GraphNode<T>[];
+};
+
+export type GraphEdge<E = unknown> = {
+  id: string;
+  source: string;
+  target: string;
+  data?: E;
+};
+
+export type LayoutNode<T = unknown> = {
+  id: string;
+  x: number;
+  y: number;
+  width?: number;
+  height?: number;
+  data: T;
+  parentId?: string;
+  depth: number;
+  isCluster?: boolean;
+};
+
+export type LayoutEdge<E = unknown> = {
+  id: string;
+  sourceId: string;
+  targetId: string;
+  source: { x: number; y: number };
+  target: { x: number; y: number };
+  data?: E;
+};
+
+export type GraphProps<N = unknown, E = unknown> = {
+  nodes: GraphNode<N>[];
+  edges?: GraphEdge<E>[];
+  onToggle?: (id: string) => void;
+  renderNode: (
+    node: LayoutNode<N>, 
+  ) => ReactNode;
+  renderEdge?: (edge: LayoutEdge<E>) => ReactNode;
+  direction?: "top-down" | "bottom-up" | "left-right" | "right-left";
+  nodeSize?: { width: number; height: number };
+  gap?: { level: number; sibling: number };
+  camera?: {
+    x: number;
+    y: number;
+    scale: number;
+  };
+  onCameraChange?: (c: { x: number; y: number; scale: number }) => void;
+  className?: string;
+  style?: CSSProperties;
+};

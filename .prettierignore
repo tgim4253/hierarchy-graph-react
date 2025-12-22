@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+coverage
+*.log
+*.tsbuildinfo
+pnpm-lock.yaml
+apps/**/dist
+packages/**/dist

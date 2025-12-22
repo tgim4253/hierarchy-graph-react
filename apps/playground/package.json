@@ -1,0 +1,23 @@
+{
+  "name": "playground",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "chess-tree-react": "workspace:*",
+    "hierarchy-graph-react": "workspace:*",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "typescript": "^5.9.0",
+    "vite": "^5.4.0"
+  }
+}
