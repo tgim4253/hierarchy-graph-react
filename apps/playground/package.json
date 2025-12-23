@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "chess-tree-react": "workspace:*",
     "hierarchy-graph-react": "workspace:*",
     "react": "^18.3.0",
     "react-dom": "^18.3.0"
