@@ -1,5 +1,6 @@
 import type { GraphProps } from '../core/types';
 import { useLayout } from '../hooks/useLayout';
+import { usePanZoom } from '../hooks/usePanZoom';
 import { GraphRoot } from '../renderer/GraphRoot';
 import { NodeLayer } from '../renderer/NodeLayer';
 import { SvgEdges } from '../renderer/SvgEdges';
@@ -15,6 +16,7 @@ export function Graph<N, E = unknown>({
   nodeSize,
   gap,
   camera,
+  onCameraChange,
   className,
   style,
   parentAlignment,
@@ -27,10 +29,24 @@ export function Graph<N, E = unknown>({
     parentAlignment,
   });
 
-  const view = camera ?? DEFAULT_CAMERA;
+  const panZoom = usePanZoom({ camera, onCameraChange });
+  const enablePanZoom = Boolean(onCameraChange);
+  const view = enablePanZoom ? panZoom.camera : camera ?? DEFAULT_CAMERA;
+  const rootClassName = [className, enablePanZoom && panZoom.isPanning ? 'hgr-is-panning' : undefined]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <GraphRoot x={view.x} y={view.y} scale={view.scale} className={className} style={style}>
+    <GraphRoot
+      x={view.x}
+      y={view.y}
+      scale={view.scale}
+      className={rootClassName}
+      style={style}
+      containerRef={enablePanZoom ? panZoom.containerRef : undefined}
+      onMouseDown={enablePanZoom ? panZoom.onMouseDown : undefined}
+      onWheel={enablePanZoom ? panZoom.onWheel : undefined}
+    >
       <SvgEdges edges={layout.edges} renderEdge={renderEdge} />
       <NodeLayer nodes={layout.nodes} renderNode={renderNode} />
     </GraphRoot>

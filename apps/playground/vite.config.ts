@@ -14,7 +14,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      'hierarchy-graph-react': hierarchySrc,
+      '@tgim/hierarchy-graph-react': hierarchySrc,
     },
   },
 });

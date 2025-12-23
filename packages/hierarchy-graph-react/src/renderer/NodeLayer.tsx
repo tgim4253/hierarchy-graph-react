@@ -9,14 +9,14 @@ type NodeLayerProps<T> = {
 };
 
 export function NodeLayer<T>({ nodes, renderNode, className, style }: NodeLayerProps<T>) {
-  const layerClassName = ['graph-node-layer', className].filter(Boolean).join(' ');
+  const layerClassName = ['hgr-graph-node-layer', className].filter(Boolean).join(' ');
 
   return (
     <div className={layerClassName} style={{ position: 'absolute', inset: 0, ...style }}>
       {nodes.map(node => (
         <div
           key={node.id}
-          className="graph-node"
+          className="hgr-graph-node"
           style={{
             position: 'absolute',
             width: node.width,

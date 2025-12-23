@@ -54,7 +54,6 @@ export type LayoutEdge<E = unknown> = {
 export type GraphProps<N = unknown, E = unknown> = {
   nodes: GraphNode<N>[];
   edges?: GraphEdge<E>[];
-  onToggle?: (id: string) => void;
   renderNode: (node: LayoutNode<N>) => ReactNode;
   renderEdge?: (edge: LayoutEdge<E>) => ReactNode;
   direction?: Direction;

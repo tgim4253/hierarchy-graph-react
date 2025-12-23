@@ -1,4 +1,5 @@
 export * from './core/types';
+export * from './core/edgePath';
 export * from './components/Graph';
 export * from './hooks/useLayout';
 export * from './hooks/usePanZoom';

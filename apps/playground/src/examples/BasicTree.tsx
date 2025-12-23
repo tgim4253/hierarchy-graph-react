@@ -1,13 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
+  curvePath,
   Graph,
   type GraphNode,
   type LayoutEdge,
   type LayoutNode,
+  straightPath,
   useLayout,
   usePanZoom,
-} from 'hierarchy-graph-react';
-import { curvePath, straightPath } from '../../../../packages/hierarchy-graph-react/src/core/edgePath';
+} from '@tgim/hierarchy-graph-react';
 
 const nodes: GraphNode<{ label: string }>[] = [
   {
@@ -244,7 +245,7 @@ export default function BasicTree() {
           nodeSize={nodeSize}
           gap={gap}
           camera={camera}
-          className={isPanning ? 'is-panning' : undefined}
+          className={isPanning ? 'hgr-is-panning' : undefined}
           style={{ width: '100%', height: '100%' }}
           direction={direction}
           parentAlignment={parentAlignment}

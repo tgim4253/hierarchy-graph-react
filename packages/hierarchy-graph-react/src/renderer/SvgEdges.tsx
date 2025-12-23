@@ -17,7 +17,7 @@ export function SvgEdges<E>({
   className,
   style,
 }: SvgEdgesProps<E>) {
-  const edgesClassName = ['graph-edges', className].filter(Boolean).join(' ');
+  const edgesClassName = ['hgr-graph-edges', className].filter(Boolean).join(' ');
 
   return (
     <svg

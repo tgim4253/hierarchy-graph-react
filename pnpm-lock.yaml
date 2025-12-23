@@ -32,7 +32,7 @@ importers:
 
   apps/playground:
     dependencies:
-      hierarchy-graph-react:
+      '@tgim/hierarchy-graph-react':
         specifier: workspace:*
         version: link:../../packages/hierarchy-graph-react
       react:
