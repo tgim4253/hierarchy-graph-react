@@ -36,6 +36,6 @@ jobs:
         run: pnpm --filter @tgim/hierarchy-graph-react build
 
       - name: Publish
-        run: pnpm -C packages/hierarchy-graph-react publish --access public --no-git-checks
+        run: pnpm publish --filter @tgim/hierarchy-graph-react --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
