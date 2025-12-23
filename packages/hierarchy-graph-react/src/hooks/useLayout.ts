@@ -79,7 +79,6 @@ export function useLayout<T, E = unknown>(
       direction,
     });
 
-    console.log([...layoutNodes]);
     const finalNodes = layoutNodes;
 
     const nodeMap = new Map(finalNodes.map(node => [node.id, node]));

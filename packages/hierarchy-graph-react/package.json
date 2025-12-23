@@ -1,7 +1,26 @@
 {
-  "name": "hierarchy-graph-react",
+  "name": "@tgim/hierarchy-graph-react",
   "version": "0.1.0",
   "description": "Generic hierarchy graph components for React.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgim4253/chess-tree.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tgim4253/chess-tree/issues"
+  },
+  "homepage": "https://github.com/tgim4253/chess-tree#readme",
+  "keywords": [
+    "react",
+    "graph",
+    "tree",
+    "hierarchy",
+    "layout",
+    "visualization"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -19,13 +38,16 @@
     "dist",
     "src/styles/graph.css"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "./src/styles/graph.css"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "vitest",
     "test:run": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\""
+    "clean": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\"",
+    "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
     "@types/react": "^18.3.0",

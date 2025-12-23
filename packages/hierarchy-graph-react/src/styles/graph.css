@@ -1,0 +1,33 @@
+.hgr-graph-root {
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  cursor: grab;
+}
+
+.hgr-graph-root.hgr-is-panning {
+  cursor: grabbing;
+}
+
+.hgr-graph-root .hgr-graph-viewport {
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+}
+
+.hgr-graph-root .hgr-graph-edges {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.hgr-graph-root .hgr-graph-node-layer {
+  position: absolute;
+  inset: 0;
+}
+
+.hgr-graph-root .hgr-graph-node {
+  position: absolute;
+}

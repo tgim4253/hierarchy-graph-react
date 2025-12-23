@@ -1,4 +1,10 @@
-import type { CSSProperties, ReactNode } from 'react';
+import type {
+  CSSProperties,
+  MouseEventHandler,
+  ReactNode,
+  Ref,
+  WheelEventHandler,
+} from 'react';
 
 type GraphRootProps = {
   x: number;
@@ -7,15 +13,34 @@ type GraphRootProps = {
   children: ReactNode;
   className?: string;
   style?: CSSProperties;
+  containerRef?: Ref<HTMLDivElement>;
+  onMouseDown?: MouseEventHandler<HTMLDivElement>;
+  onWheel?: WheelEventHandler<HTMLDivElement>;
 };
 
-export function GraphRoot({ x, y, scale, children, className, style }: GraphRootProps) {
-  const rootClassName = ['graph-root', className].filter(Boolean).join(' ');
+export function GraphRoot({
+  x,
+  y,
+  scale,
+  children,
+  className,
+  style,
+  containerRef,
+  onMouseDown,
+  onWheel,
+}: GraphRootProps) {
+  const rootClassName = ['hgr-graph-root', className].filter(Boolean).join(' ');
 
   return (
-    <div className={rootClassName} style={{ position: 'relative', overflow: 'hidden', ...style }}>
+    <div
+      ref={containerRef}
+      className={rootClassName}
+      onMouseDown={onMouseDown}
+      onWheel={onWheel}
+      style={{ position: 'relative', overflow: 'hidden', ...style }}
+    >
       <div
-        className="graph-viewport"
+        className="hgr-graph-viewport"
         style={{
           position: 'absolute',
           inset: 0,
