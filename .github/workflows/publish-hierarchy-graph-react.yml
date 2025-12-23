@@ -39,4 +39,5 @@ jobs:
       - name: Publish
         run: |
           cd packages/hierarchy-graph-react
-          pnpm publish --access public --provenance
+          pnpm publish --access public --provenance --no-git-checks
+
