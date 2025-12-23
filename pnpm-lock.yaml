@@ -32,9 +32,6 @@ importers:
 
   apps/playground:
     dependencies:
-      chess-tree-react:
-        specifier: workspace:*
-        version: link:../../packages/chess-tree-react
       hierarchy-graph-react:
         specifier: workspace:*
         version: link:../../packages/hierarchy-graph-react
@@ -57,18 +54,6 @@ importers:
       vite:
         specifier: ^5.4.0
         version: 5.4.21(@types/node@20.19.27)
-
-  packages/chess-tree-react:
-    dependencies:
-      hierarchy-graph-react:
-        specifier: workspace:*
-        version: link:../hierarchy-graph-react
-      react:
-        specifier: ^18.0.0
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.0.0
-        version: 18.3.1(react@18.3.1)
 
   packages/hierarchy-graph-react:
     devDependencies:

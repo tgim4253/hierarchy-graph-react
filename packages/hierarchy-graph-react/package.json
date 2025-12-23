@@ -12,10 +12,12 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./graph.css": "./src/styles/graph.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/styles/graph.css"
   ],
   "sideEffects": false,
   "scripts": {
