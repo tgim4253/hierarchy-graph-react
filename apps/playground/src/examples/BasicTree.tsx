@@ -1,5 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { Graph, type GraphNode, type LayoutEdge, type LayoutNode, useLayout } from 'hierarchy-graph-react';
+import { useEffect, useMemo, useState } from 'react';
+import {
+  Graph,
+  type GraphNode,
+  type LayoutEdge,
+  type LayoutNode,
+  useLayout,
+  usePanZoom,
+} from 'hierarchy-graph-react';
 import { curvePath, straightPath } from '../../../../packages/hierarchy-graph-react/src/core/edgePath';
 
 const nodes: GraphNode<{ label: string }>[] = [
@@ -82,7 +89,13 @@ export default function BasicTree() {
   const [camera, setCamera] = useState<Camera>(DEFAULT_CAMERA);
   const [autoFit, setAutoFit] = useState(true);
   const [viewport, setViewport] = useState<Viewport>({ width: 0, height: 0 });
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { containerRef, onMouseDown, onWheel, isPanning } = usePanZoom({
+    camera,
+    onCameraChange: (next) => {
+      setAutoFit(false);
+      setCamera(next);
+    },
+  });
 
   const layout = useLayout(nodes, {
     direction,
@@ -222,6 +235,8 @@ export default function BasicTree() {
       </div>
       <div
         ref={containerRef}
+        onMouseDown={onMouseDown}
+        onWheel={onWheel}
         style={{ height: 520, border: '1px solid #e2e2e2', borderRadius: 12 }}
       >
         <Graph
@@ -229,6 +244,7 @@ export default function BasicTree() {
           nodeSize={nodeSize}
           gap={gap}
           camera={camera}
+          className={isPanning ? 'is-panning' : undefined}
           style={{ width: '100%', height: '100%' }}
           direction={direction}
           parentAlignment={parentAlignment}
