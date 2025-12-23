@@ -45,7 +45,7 @@ export function Example() {
 
 ## Graph example
 
-![Hierarchy graph example](./assets/graph-example.png)
+![Hierarchy graph example](/packages/hierarchy-graph-react/assets/graph-example.png)
 
 ## Types
 
