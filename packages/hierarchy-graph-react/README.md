@@ -43,6 +43,10 @@ export function Example() {
 }
 ```
 
+## Graph example
+
+![Hierarchy graph example](./assets/graph-example.png)
+
 ## Types
 
 ```ts
