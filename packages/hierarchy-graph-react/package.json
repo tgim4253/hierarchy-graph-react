@@ -43,6 +43,8 @@
   ],
   "scripts": {
     "build": "tsup",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "test": "vitest",
     "test:run": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",

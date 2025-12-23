@@ -8,18 +8,27 @@
     "build:playground": "pnpm --filter ./apps/playground build",
     "build:packages": "pnpm -r --filter \"./packages/**\" build",
     "build": "pnpm run build:packages && pnpm run build:playground",
+    "storybook": "pnpm --filter @tgim/hierarchy-graph-react storybook",
+    "build-storybook": "pnpm --filter @tgim/hierarchy-graph-react build-storybook",
     "typecheck:packages": "pnpm -r --filter \"./packages/**\" typecheck",
     "typecheck": "pnpm run typecheck:packages",
     "test:packages": "pnpm -r --filter \"./packages/**\" test --if-present",
     "test": "pnpm run test:packages",
-    "clean": "pnpm -r --filter \"./packages/**\" clean"
+    "clean": "pnpm -r --filter \"./packages/**\" clean",
+    "chromatic": "npx chromatic"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^8.6.14",
+    "@storybook/addon-interactions": "^8.6.14",
+    "@storybook/react": "8.6.14",
+    "@storybook/react-vite": "^8.6.14",
+    "@storybook/test": "^8.6.14",
     "@types/node": "^20.14.0",
     "@types/react": "^18.3.0",
     "@types/react-dom": "^18.3.0",
     "react": "^18.3.0",
     "react-dom": "^18.3.0",
+    "storybook": "8.6.14",
     "tsup": "^8.0.0",
     "typescript": "^5.6.0"
   }
