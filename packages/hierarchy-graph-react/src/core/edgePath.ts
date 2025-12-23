@@ -10,11 +10,24 @@ export function straightPath(edge: LayoutEdge, _direction?: Direction): string {
   return `M ${source.x} ${source.y} L ${target.x} ${target.y}`;
 }
 
-export function curvePath(edge: LayoutEdge, direction?: Direction): string {
+export type CurvePathOptions = {
+  direction?: Direction;
+  straightRatio?: number;
+};
+
+export function curvePath(
+  edge: LayoutEdge,
+  directionOrOptions?: Direction | CurvePathOptions,
+  options?: CurvePathOptions,
+): string {
+  const direction =
+    typeof directionOrOptions === 'object' ? directionOrOptions?.direction : directionOrOptions;
+  const straightRatio =
+    (typeof directionOrOptions === 'object' ? directionOrOptions?.straightRatio : options?.straightRatio) ??
+    0.3;
   const { source, target } = edge;
   const dx = target.x - source.x;
   const dy = target.y - source.y;
-  const straightRatio = 0.3;
 
   if (prefersHorizontal(direction, dx, dy)) {
     const bendX = source.x + dx * straightRatio;
