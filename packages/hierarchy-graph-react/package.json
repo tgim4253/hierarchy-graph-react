@@ -4,12 +4,12 @@
   "description": "Generic hierarchy graph components for React.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tgim4253/chess-tree.git"
+    "url": "git+https://github.com/tgim4253/hierarchy-graph-react.git"
   },
   "bugs": {
-    "url": "https://github.com/tgim4253/chess-tree/issues"
+    "url": "https://github.com/tgim4253/hierarchy-graph-react/issues"
   },
-  "homepage": "https://github.com/tgim4253/chess-tree#readme",
+  "homepage": "https://github.com/tgim4253/hierarchy-graph-react#readme",
   "keywords": [
     "react",
     "graph",
