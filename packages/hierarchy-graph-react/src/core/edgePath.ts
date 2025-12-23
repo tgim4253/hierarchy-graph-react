@@ -32,12 +32,12 @@ export function curvePath(
 
   if (prefersHorizontal(direction, dx, dy)) {
     const bendX = source.x + dx * straightRatio;
-    const controlX = bendX + (target.x - bendX) / 3;
+    const controlX = bendX + (target.x - bendX) / 2;
     return `M ${source.x} ${source.y} L ${bendX} ${source.y} C ${controlX} ${source.y} ${controlX} ${target.y} ${target.x} ${target.y}`;
   }
 
   const bendY = source.y + dy * straightRatio;
-  const controlY = bendY + (target.y - bendY) / 3;
+  const controlY = bendY + (target.y - bendY) / 2;
   return `M ${source.x} ${source.y} L ${source.x} ${bendY} C ${source.x} ${controlY} ${target.x} ${controlY} ${target.x} ${target.y}`;
 }
 
