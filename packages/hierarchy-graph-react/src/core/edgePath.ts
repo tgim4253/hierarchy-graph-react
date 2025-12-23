@@ -23,8 +23,9 @@ export function curvePath(
   const direction =
     typeof directionOrOptions === 'object' ? directionOrOptions?.direction : directionOrOptions;
   const straightRatio =
-    (typeof directionOrOptions === 'object' ? directionOrOptions?.straightRatio : options?.straightRatio) ??
-    0.3;
+    (typeof directionOrOptions === 'object'
+      ? directionOrOptions?.straightRatio
+      : options?.straightRatio) ?? 0.3;
   const { source, target } = edge;
   const dx = target.x - source.x;
   const dy = target.y - source.y;

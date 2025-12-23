@@ -117,3 +117,23 @@ When `onCameraChange` is provided, the graph root handles wheel zoom and left-dr
 - `maxScale?`: `number`
 - `zoomSpeed?`: `number`
 - `onCameraChange?`: `(camera: { x: number; y: number; scale: number }) => void`
+
+## Edge paths
+
+```ts
+import { curvePath, straightPath, elbowPath } from '@tgim/hierarchy-graph-react';
+
+curvePath(edge, 'top-down');
+curvePath(edge, { direction: 'top-down', straightRatio: 0.45 });
+```
+
+- `straightPath(edge, direction?)`: straight line between anchors
+- `curvePath(edge, direction | { direction?, straightRatio? })`: curved elbow with tunable straight ratio (default `0.3`)
+- `elbowPath(edge, direction?)`: orthogonal elbow path
+
+## Storybook
+
+```bash
+pnpm --filter @tgim/hierarchy-graph-react storybook
+pnpm --filter @tgim/hierarchy-graph-react build-storybook
+```
