@@ -1,4 +1,4 @@
-## Chess Tree Monorepo
+## hierarchy-graph-react Monorepo
 
 Package README: [packages/hierarchy-graph-react/README.md](packages/hierarchy-graph-react/README.md)
 
