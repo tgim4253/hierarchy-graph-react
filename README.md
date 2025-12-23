@@ -1,6 +1,6 @@
 ## Chess Tree Monorepo
 
-Package README: `packages/hierarchy-graph-react/README.md`
+Package README: [packages/hierarchy-graph-react/README.md](packages/hierarchy-graph-react/README.md)
 
 This repo hosts the `@tgim/hierarchy-graph-react` package and a small playground app for local testing.
 
